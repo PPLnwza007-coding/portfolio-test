@@ -1,83 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Share Tech Mono', monospace;
 }
 
 body {
-  background: #0f172a;
-  color: #e5e7eb;
-  line-height: 1.6;
+  background: #050505;
+  color: #00ff9c;
+  overflow-x: hidden;
 }
 
-header {
-  background: #020617;
-  padding: 2rem;
+.noise {
+  position: fixed;
+  inset: 0;
+  background: url('https://grainy-gradients.vercel.app/noise.svg');
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
-header h1 {
-  font-size: 2.5rem;
+.glitch {
+  font-size: 6rem;
+  position: relative;
 }
 
-nav {
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: .7;
+}
+
+.glitch::before {
+  color: red;
+  transform: translate(3px, 0);
+  animation: glitch 2s infinite;
+}
+
+.glitch::after {
+  color: cyan;
+  transform: translate(-3px, 0);
+  animation: glitch 1.5s infinite;
+}
+
+@keyframes glitch {
+  0% { clip-path: inset(0 0 90% 0); }
+  50% { clip-path: inset(10% 0 20% 0); }
+  100% { clip-path: inset(80% 0 0 0); }
+}
+
+.subtitle {
+  color: #b6ffe3;
   margin-top: 1rem;
 }
 
-nav a {
-  color: #38bdf8;
-  margin: 0 1rem;
-  text-decoration: none;
+.typing {
+  margin-top: 1.5rem;
+  color: #00ffaa;
 }
 
-section {
-  padding: 3rem 2rem;
-  max-width: 1000px;
-  margin: auto;
+.panel {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 2rem;
+  border: 1px solid #00ff9c33;
+  background: #0a0a0a;
+  box-shadow: 0 0 40px #00ff9c22;
 }
 
-h2 {
-  color: #38bdf8;
+.panel h2 {
   margin-bottom: 1rem;
+  color: #00ffea;
 }
 
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-}
-
-.card {
-  background: #020617;
-  padding: 1.5rem;
-  border-radius: 12px;
-  text-align: center;
+.panel span {
+  color: #00ffaa;
 }
 
 .skills span {
-  background: #1e293b;
-  padding: .5rem 1rem;
-  border-radius: 999px;
-  margin: .3rem;
   display: inline-block;
+  border: 1px solid #00ff9c;
+  padding: .4rem .8rem;
+  margin: .3rem;
 }
 
 button {
-  background: #38bdf8;
-  color: #020617;
-  border: none;
-  padding: .7rem 1.5rem;
-  border-radius: 8px;
+  background: transparent;
+  color: #00ff9c;
+  border: 1px solid #00ff9c;
+  padding: .8rem 2rem;
   cursor: pointer;
 }
 
 button:hover {
-  background: #0ea5e9;
+  background: #00ff9c;
+  color: #000;
 }
 
 footer {
   text-align: center;
   padding: 2rem;
-  color: #94a3b8;
+  font-size: .8rem;
+  opacity: .6;
 }
